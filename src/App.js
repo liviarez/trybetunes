@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom/cjs/react-router-dom.min';
+import { Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Search from './Pages/Search';
 import Album from './Pages/Album';
