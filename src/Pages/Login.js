@@ -1,54 +1,68 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 
-function Login() {
-  const [isLoginButtonDisabled, setLoginButtonDisabled] = useState(true);
-  const [userNameInput, setUserNameInput] = useState('');
-  const [userName, setUserName] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-
-  const enableButton = ({ target }) => {
-    const minimumCharacters = 3;
-    const inputValue = target.value;
-    setUserNameInput(inputValue);
-    setLoginButtonDisabled((inputValue.length < minimumCharacters));
-    console.log(userName);
-  };
-
-  const handleLoginButton = async () => {
-    setLoading(true);
-    setUserName(userNameInput);
-    await createUser({ name: userNameInput });
-    setLoading(false);
-    setRedirect(true);
-  };
-
-  if (redirect) {
-    return <Redirect to="/search" />;
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoginButtonDisabled: true,
+      userName: '',
+      isLoading: false,
+      redirect: false,
+    };
   }
 
-  return (
-    <div data-testid="page-login">
-      <div>
-        <input
-          data-testid="login-name-input"
-          placeholder="Digite seu nome"
-          onChange={ enableButton }
-        />
-        <button
-          data-testid="login-submit-button"
-          disabled={ isLoginButtonDisabled }
-          onClick={ handleLoginButton }
-        >
-          Entrar
-        </button>
-        {loading && <Loading />}
+  enableButton = ({ target }) => {
+    console.log(target.value);
+    const minimumCharacters = 3;
+    const inputValue = target.value;
+    this.setState({
+      userName: inputValue,
+      isLoginButtonDisabled: inputValue.length < minimumCharacters,
+    });
+    /* if (inputValue.length >= minimumCharacters) {
+      this.setState({ isLoginButtonDisabled: false });
+    } */
+  };
+
+  handleLoginButton = async () => {
+    const { userName } = this.state;
+    this.setState({ isLoading: true });
+    this.setState({ userName });
+    await createUser({ name: userName });
+    this.setState({ isLoading: false, redirect: true });
+  };
+
+  render() {
+    const { redirect, isLoginButtonDisabled, isLoading, userName } = this.state;
+
+    if (redirect === true) {
+      return <Redirect to="/search" />;
+    }
+
+    return (
+      <div data-testid="page-login">
+        <div>
+          <input
+            data-testid="login-name-input"
+            placeholder="Digite seu nome"
+            value={ userName }
+            onChange={ this.enableButton }
+          />
+          <button
+            data-testid="login-submit-button"
+            disabled={ isLoginButtonDisabled }
+            onClick={ this.handleLoginButton }
+          >
+            Entrar
+          </button>
+          {isLoading ? <Loading /> : ''}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Login;
