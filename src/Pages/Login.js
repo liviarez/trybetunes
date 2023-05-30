@@ -14,7 +14,7 @@ class Login extends Component {
     };
   }
 
-  enableButton = ({ target }) => {
+  validateLoginButton = ({ target }) => {
     console.log(target.value);
     const minimumCharacters = 3;
     const inputValue = target.value;
@@ -27,7 +27,7 @@ class Login extends Component {
     } */
   };
 
-  handleLoginButton = async () => {
+  saveAndRedirectButton = async () => {
     const { userName } = this.state;
     this.setState({ isLoading: true });
     this.setState({ userName });
@@ -49,12 +49,12 @@ class Login extends Component {
             data-testid="login-name-input"
             placeholder="Digite seu nome"
             value={ userName }
-            onChange={ this.enableButton }
+            onChange={ this.validateLoginButton }
           />
           <button
             data-testid="login-submit-button"
             disabled={ isLoginButtonDisabled }
-            onClick={ this.handleLoginButton }
+            onClick={ this.saveAndRedirectButton }
           >
             Entrar
           </button>
