@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
-/* import Loading from './Loading';
+/* import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+ *//* import Loading from './Loading';
  */
 export default class Favorites extends Component {
   /*  state = {
