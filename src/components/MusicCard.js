@@ -26,6 +26,7 @@ export default class MusicCard extends Component {
   }
 
   isFavoriteChecked = async ({ target }) => {
+    const { updateFavoriteSongList } = this.props;
     this.setState({
       isLoading: true,
       isFavorite: target,
@@ -35,7 +36,8 @@ export default class MusicCard extends Component {
       await addSong(song);
     } else {
       await removeSong(song);
-      console.log('entrei');
+      updateFavoriteSongList();
+      // Ajuda da  monitoria.
     }
     this.setState({
       isLoading: false,
@@ -79,5 +81,6 @@ MusicCard.propTypes = {
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   song: PropTypes.string.isRequired,
+  updateFavoriteSongList: PropTypes.func.isRequired,
 
 };
