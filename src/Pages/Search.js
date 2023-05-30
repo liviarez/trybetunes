@@ -39,14 +39,14 @@ class Searchs extends Component {
     const { isButtonSearchDisable, isLoading, albums, name } = this.state;
     return (
       isLoading ? <Loading /> : (
-        <div>
+        <div data-testid="page-search">
           <form>
             <label>
               <input
                 data-testid="search-artist-input"
                 type="text"
                 name="name"
-                placeholder="Nome do artista"
+                placeholder="O que você quer ouvir?"
                 onChange={ this.validateSearchButton }
               />
               <button
@@ -54,7 +54,7 @@ class Searchs extends Component {
                 disabled={ isButtonSearchDisable }
                 onClick={ this.saveButton }
               >
-                Pesquisar
+                Search
               </button>
               <p>
                 Resultado de álbuns de:
@@ -68,11 +68,11 @@ class Searchs extends Component {
                   {albums.length !== 0
                     ? (
                       <div>
-                        {albums.map((cart) => (<Pesquisar
-                          key={ cart.collectionId }
-                          id={ cart.collectionId }
-                          imagem={ cart.artworkUrl100 }
-                          name={ cart.collectionName }
+                        {albums.map((album) => (<Pesquisar
+                          key={ album.collectionId }
+                          id={ album.collectionId }
+                          imagem={ album.artworkUrl100 }
+                          name={ album.collectionName }
                         />))}
                       </div>
                     ) : (<p>Nenhum álbum foi encontrado</p>)}
