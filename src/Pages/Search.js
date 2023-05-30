@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Pesquisar from '../components/Pesquisar';
+import Header from '../components/Header';
 
 class Searchs extends Component {
   state = {
@@ -11,15 +12,15 @@ class Searchs extends Component {
     isLoading: false,
   };
 
-  saveButton = () => {
+  requestSearchAlbum = () => {
     this.setState({
       isLoading: true,
     }, async () => {
       const { name } = this.state;
-      const albunsArtistas = await searchAlbumsAPI(name);
+      const albums = await searchAlbumsAPI(name);
       this.setState({
         isLoading: false,
-        albums: albunsArtistas,
+        albums,
       });
     });
   };
@@ -40,6 +41,7 @@ class Searchs extends Component {
     return (
       isLoading ? <Loading /> : (
         <div data-testid="page-search">
+          <Header />
           <form>
             <label>
               <input
@@ -52,7 +54,7 @@ class Searchs extends Component {
               <button
                 data-testid="search-artist-button"
                 disabled={ isButtonSearchDisable }
-                onClick={ this.saveButton }
+                onClick={ this.requestSearchAlbum }
               >
                 Search
               </button>
