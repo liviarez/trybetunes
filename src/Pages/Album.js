@@ -26,6 +26,10 @@ export default class Album extends Component {
     });
   };
 
+  updateFavoriteSongList = () => {
+    // gambiarra na monitoria para voltar a funcionar o req 11
+  };
+
   render() {
     const { isLoading, artistAlbumInfo } = this.state;
     if (isLoading) { return <Loading />; }
@@ -42,6 +46,8 @@ export default class Album extends Component {
               trackName={ track.trackName }
               trackId={ track.trackId }
               song={ track }
+              updateFavoriteSongList={ this.updateFavoriteSongList }
+
             />
           ))
         }
