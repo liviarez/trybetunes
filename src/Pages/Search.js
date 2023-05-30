@@ -9,20 +9,20 @@ class Searchs extends Component {
   state = {
     isButtonSearchDisable: true,
     name: '',
-    albums: '',
+    albums: [],
     isLoading: false,
   };
 
-  requestSearchAlbum = () => {
+  requestSearchAlbum = async () => {
+    const { name } = this.state;
     this.setState({
       isLoading: true,
-    }, async () => {
-      const { name } = this.state;
-      const albums = await searchAlbumsAPI(name);
-      this.setState({
-        isLoading: false,
-        albums,
-      });
+    });
+    const albums = await searchAlbumsAPI(name);
+    console.log(albums);
+    this.setState({
+      isLoading: false,
+      albums,
     });
   };
 
@@ -71,15 +71,16 @@ class Searchs extends Component {
                   {albums.length !== 0
                     ? (
                       <div>
-                        <p>{`Resultado de álbuns de: ${name}`}</p>
-                        {albums.map((artist) => (
-                          <div key={ artist.length }>
+                        <p>{`Resultado de álbuns de:${name}`}</p>
+                        {albums.map((artist, index) => (
+                          <div key={ index }>
                             <p>{artist.colectionName}</p>
                             <Link
                               to={ `/album/${artist.collectionId}` }
                               data-testid={ `link-to-album-${artist.collectionId}` }
                             >
                               {artist.collectionName}
+                              <img src={ artist.artworkUrl100 } alt="" />
                             </Link>
                           </div>
                         ))}

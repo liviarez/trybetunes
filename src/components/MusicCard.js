@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../Pages/Loading';
 
 export default class MusicCard extends Component {
@@ -14,9 +14,13 @@ export default class MusicCard extends Component {
 
   async componentDidMount() {
     const { trackId } = this.props;
+    this.setState({
+      isLoading: true,
+    });
     const callFavoriteSongAPI = await getFavoriteSongs();
     this.setState({
       // hof: some - boolean
+      isLoading: false,
       isFavorite: callFavoriteSongAPI.some((favorites) => favorites.trackId === trackId),
     });
   }
@@ -26,11 +30,16 @@ export default class MusicCard extends Component {
       isLoading: true,
       isFavorite: target,
     });
-    const { song } = this.state;
-    await addSong(song);
-
+    const { song } = this.props;
+    if (target.checked) {
+      await addSong(song);
+    } else {
+      await removeSong(song);
+      console.log('entrei');
+    }
     this.setState({
       isLoading: false,
+      isFavorite: target.checked,
     });
   };
 
@@ -69,5 +78,6 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  song: PropTypes.string.isRequired,
 
 };
