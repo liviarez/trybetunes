@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from './Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Pesquisar from '../components/Pesquisar';
+// import Pesquisar from '../components/Pesquisar';
 import Header from '../components/Header';
 
 class Searchs extends Component {
@@ -70,12 +71,18 @@ class Searchs extends Component {
                   {albums.length !== 0
                     ? (
                       <div>
-                        {albums.map((album) => (<Pesquisar
-                          key={ album.collectionId }
-                          id={ album.collectionId }
-                          imagem={ album.artworkUrl100 }
-                          name={ album.collectionName }
-                        />))}
+                        <p>{`Resultado de álbuns de: ${name}`}</p>
+                        {albums.map((artist) => (
+                          <div key={ artist.length }>
+                            <p>{artist.colectionName}</p>
+                            <Link
+                              to={ `/album/${artist.collectionId}` }
+                              data-testid={ `link-to-album-${artist.collectionId}` }
+                            >
+                              {artist.collectionName}
+                            </Link>
+                          </div>
+                        ))}
                       </div>
                     ) : (<p>Nenhum álbum foi encontrado</p>)}
                 </div>)

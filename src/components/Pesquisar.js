@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-class Pesquisa extends Component {
+class Pesquisar extends Component {
   render() {
     const { imagem, name, id } = this.props;
     return (
@@ -17,9 +17,9 @@ class Pesquisa extends Component {
     );
   }
 }
-Pesquisa.propTypes = {
+Pesquisar.propTypes = {
   imagem: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 };
-export default Pesquisa;
+export default Pesquisar;
