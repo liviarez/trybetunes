@@ -18,6 +18,7 @@ export default class Favorites extends Component {
     this.setState({
       isLoading: true,
     });
+    // localstorage
     const callFavoriteSongs = await getFavoriteSongs();
     this.setState({
       isLoading: false,

@@ -28,25 +28,23 @@ class Profile extends React.Component {
             <section>
               <img data-testid="profile-image" src={ image } alt="" />
               <div>
-                <h3>Nome</h3>
+                <h4>Nome</h4>
                 <p>{name}</p>
               </div>
               <div>
-                <h3>E-mail</h3>
+                <h4>E-mail</h4>
                 <p>{email}</p>
               </div>
               <div>
-                <h3>Descrição</h3>
+                <h4>Descrição</h4>
                 <p>{description}</p>
               </div>
               <Link to="/profile/edit">Editar perfil</Link>
             </section>
           )
         }
-
       </div>
     );
   }
 }
-
 export default Profile;

@@ -4,8 +4,6 @@ import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongs
 import Loading from '../Pages/Loading';
 
 export default class MusicCard extends Component {
-  // Criar input checkbox data-testid={`checkbox-music-${trackId}`} DONE
-  // Chamar API para adicionar musica addSOng
   state = {
     isFavorite: false,
     isLoading: false,
