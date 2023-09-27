@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Input, Button, Switch } from '@nextui-org/react';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 
@@ -41,23 +42,30 @@ class Login extends Component {
     if (redirect === true) {
       return <Redirect to="/search" />;
     }
-
     return (
-      <div data-testid="page-login">
+      <div
+        data-testid="page-login"
+        className="flex justify-center items-center h-screen mx-auto"
+      >
         <div>
-          <input
+          <Input
+            className="py-2"
             data-testid="login-name-input"
             placeholder="Digite seu nome"
             value={ userName }
             onChange={ this.validateLoginButton }
           />
-          <button
+          <Button
+            color="primary"
             data-testid="login-submit-button"
             disabled={ isLoginButtonDisabled }
             onClick={ this.saveAndRedirectButton }
           >
             Entrar
-          </button>
+          </Button>
+          <Switch defaultSelected className="px-2">
+            Lembrar de mim
+          </Switch>
           {isLoading ? <Loading /> : ''}
         </div>
       </div>

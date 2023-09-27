@@ -35,7 +35,6 @@ export default class MusicCard extends Component {
     } else {
       await removeSong(song);
       updateFavoriteSongList();
-      // Ajuda da  monitoria.
     }
     this.setState({
       isLoading: false,

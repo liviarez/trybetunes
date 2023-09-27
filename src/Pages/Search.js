@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@nextui-org/react';
 import Loading from './Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from '../components/Header';
@@ -51,18 +52,14 @@ class Searchs extends Component {
                 placeholder="O que você quer ouvir?"
                 onChange={ this.validateSearchButton }
               />
-              <button
+              <Button
+                color="primary"
                 data-testid="search-artist-button"
                 disabled={ isButtonSearchDisable }
                 onClick={ this.requestSearchAlbum }
               >
-                Search
-              </button>
-              <p>
-                Resultado de álbuns de:
-                {' '}
-                {name}
-              </p>
+                Pesquisar
+              </Button>
             </label>
             {
               albums !== '' && (

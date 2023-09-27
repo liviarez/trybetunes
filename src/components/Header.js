@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem } from '@nextui-org/react';
 import { getUser } from '../services/userAPI';
 import Loading from '../Pages/Loading';
 
