@@ -6,24 +6,23 @@
 <details>
   <summary markdown="span"><strong>:us: English</strong></summary><br />
 
-React and Redux project developed by [Livia Rezende](https://www.linkedin.com/in/l%C3%ADviamonteiro/) 
+React project developed by [Livia Rezende](https://www.linkedin.com/in/l%C3%ADviamonteiro/) 
 
-The objective of the application is to have an international expense tracking wallet, it can also perform currency conversions through the use of Rest API.
+It's core feature is a music player,this component allows users to play, pause, skip, and control the volume of songs. It may include album artwork, song information, and progress bar.. You can navigate through soome pages, such as login, search and profile.
 <br />
 </details>
 
 <details>
   <summary markdown="span"><strong>:brazil: Português</strong></summary><br />
 
-Projeto de React e Redux desenvolvido por [Livia Rezende](https://www.linkedin.com/in/l%C3%ADviamonteiro/) 
+Projeto de React desenvolvido por [Livia Rezende](https://www.linkedin.com/in/l%C3%ADviamonteiro/) 
 
-O objetivo da aplicaçao é ter uma carteira de controle de gastos internactionais, ela também consegue realziar as conversões de moeda com o uso da API. 
-
+Seu principal recurso é um reprodutor de música, este componente permite aos usuários reproduzir, pausar, pular e controlar o volume das músicas. Pode incluir capa do álbum, informações da música e barra de progresso. Você pode navegar por algumas páginas, como login, pesquisa e perfil.
 
 <br />
 </details>
 
-## 📃 Skills/Habilidades
+## 📄 Skills/Habilidades
 
 <details>
   <summary markdown="span"><strong>:us: English</strong></summary><br />
